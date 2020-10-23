@@ -5,6 +5,10 @@ language: php
 php:
     - 7.3
 
+stage:
+    - unit tests
+    - deploy
+
 branches:
     only:
         - master
