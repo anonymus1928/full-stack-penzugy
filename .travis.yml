@@ -1,0 +1,22 @@
+os: linux
+
+language: php
+
+php:
+    - 7.3
+
+branches:
+    only:
+        - master
+
+before_script:
+    - composer self-update
+    - composer install
+    - touch database/database.sqlite
+    - cp .env.travis .env
+
+deploy:
+    provider: heroku
+    api_key:
+        secure: x24MHswwYC+uapaUk1n2/AFCvtdcoZtakVI0OdmzmTq4BGoPCbg2dwDiqfOtyzSIfaYQ8xrz10b8V195a2B6n7PiXTHkyzi+H5+i5xqAHMEB9gGgIj2tI7zQPIZKpL8uTYdXZJxHNqaeleEHIlAsv8Vk+TxOjtjLOKfhqEsqApSOS6/4e05AzVSYYYxw1SmH2/CUM2gvGPbUy5zyvIPY+uNyj7ADTM6GXAeBSVIjpLDKflqNjH3OMuPNzJUpH5IsXb8rIps+Bf25ct2F96XBptmA7LzoZMpuMUBCXi/7nM93w+tkMd3gDjEGleD95tHrjKDzSywjFLDDDzdRSGeKIMF9iMVuLzRPyhuIHnasJw2e6wyBoRoz1W40B4t4WyTb+1i1YvdckdM/lp0oNCQgvgQ+fpcjKsGQClY1ZZ6XnjhDZcmSYXZUDrl6+9somGND5Vz3cKS5GyoHioVKbP6ta5QJya2AMrb4igk4kYJu1MnqkdDOAPDJojrgIGfHud1uJioBi08LqUY49r2XmwlFJszwlpCv+fcpPDPJiokHsQOl9iedQHTq/UWjZAmBg4PHHrVjdfntk3Y45LL11NpvHuUVlaY06CR6vHHzSpuSoA9GjV8i8TSJkimr76dfo90Z9cEK4Z1OgRBdGxf3V47I3fpDF8L04oiZ3oULGQ0CQ/E=
+    app: fullstack-penzugy
