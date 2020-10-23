@@ -8,6 +8,8 @@ php:
 branches:
     only:
         - master
+    except:
+        - dev
 
 before_script:
     - composer self-update
