@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -33,5 +34,13 @@ class Handler extends ExceptionHandler
     public function register()
     {
         //
+    }
+
+    /**
+     * Override the unauthenticated method, so when the authentication fails
+     * it respondes unauthorised 401, instead of redirecting to login
+     */
+    protected function unauthenticated($request, AuthenticationException $exception) {
+        return response()->json(['status' => 'error', 'error' => 'Unauthenticated'], 401);
     }
 }
