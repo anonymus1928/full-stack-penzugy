@@ -18,12 +18,12 @@ before_script:
     - cp .env.travis .env
     - php artisan key:generate
     - php artisan migrate
-    - php artisan passport:key
+    - php artisan passport:install
 
 jobs:
     include:
-        - stage: unit tests
-          script: skip
+        - stage: tests
+          script: php artisan test
         - stage: deploy
           script: skip
           deploy:
