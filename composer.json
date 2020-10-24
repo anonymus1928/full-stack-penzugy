@@ -63,7 +63,7 @@
             "chmod -R 777 public/",
             "touch database/database.sqlite",
             "cp .env.travis .env",
-            "@php artisan key:generate",
+            "@php artisan key:generate --force",
             "@php artisan migrate --force",
             "@php artisan passport:install"
         ]
