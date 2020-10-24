@@ -57,7 +57,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Get the user's investments.
+     * Get the user's stock investments.
      */
     public function investments() {
         return $this->hasMany('App\Models\Investment', 'user_id', 'id');

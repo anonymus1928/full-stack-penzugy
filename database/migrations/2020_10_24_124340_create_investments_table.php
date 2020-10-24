@@ -16,10 +16,8 @@ class CreateInvestmentsTable extends Migration
         Schema::create('investments', function (Blueprint $table) {
             $table->id();
             $table->integer('price');
-            $table->boolean('is_stock_share');
-            $table->integer('amount')->nullable();
-            $table->float('due_year')->nullable();
-            $table->float('interest')->nullable();
+            $table->integer('amount');
+            $table->date('date');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
