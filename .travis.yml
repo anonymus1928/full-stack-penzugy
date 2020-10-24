@@ -21,15 +21,15 @@ before_script:
 
 jobs:
     include:
-        - stage: Tests
-          script: php artisan test
-        - stage: Deploy
-          script: skip
-          deploy:
-            skip_cleanup: true
-            provider: heroku
-            strategy: api
-            app: fullstack-penzugy
-            api_key:
-                secure: x24MHswwYC+uapaUk1n2/AFCvtdcoZtakVI0OdmzmTq4BGoPCbg2dwDiqfOtyzSIfaYQ8xrz10b8V195a2B6n7PiXTHkyzi+H5+i5xqAHMEB9gGgIj2tI7zQPIZKpL8uTYdXZJxHNqaeleEHIlAsv8Vk+TxOjtjLOKfhqEsqApSOS6/4e05AzVSYYYxw1SmH2/CUM2gvGPbUy5zyvIPY+uNyj7ADTM6GXAeBSVIjpLDKflqNjH3OMuPNzJUpH5IsXb8rIps+Bf25ct2F96XBptmA7LzoZMpuMUBCXi/7nM93w+tkMd3gDjEGleD95tHrjKDzSywjFLDDDzdRSGeKIMF9iMVuLzRPyhuIHnasJw2e6wyBoRoz1W40B4t4WyTb+1i1YvdckdM/lp0oNCQgvgQ+fpcjKsGQClY1ZZ6XnjhDZcmSYXZUDrl6+9somGND5Vz3cKS5GyoHioVKbP6ta5QJya2AMrb4igk4kYJu1MnqkdDOAPDJojrgIGfHud1uJioBi08LqUY49r2XmwlFJszwlpCv+fcpPDPJiokHsQOl9iedQHTq/UWjZAmBg4PHHrVjdfntk3Y45LL11NpvHuUVlaY06CR6vHHzSpuSoA9GjV8i8TSJkimr76dfo90Z9cEK4Z1OgRBdGxf3V47I3fpDF8L04oiZ3oULGQ0CQ/E=
+    - stage: Jobs
+      name: Tests
+      script: php artisan Test
+      name: Deploy
+      deploy:
+        skip_cleanup: true
+        provider: heroku
+        strategy: api
+        app: fullstack-penzugy
+        api_key:
+            secure: Yu/XMooOP4OYqKBuvrQpc5ojx+3Omm5wx2g23DeZTj5PXscwUQBZTDpiF/fEP48gWRqPjlSVcUF3014GCQ5lszG4x3KIhZGDEJRS1ptV71LOWJWk44Eb3AhdxmviIAtssIYL9wrMiSa3zUoUMjogpxeUhP9FBmpUJO5dKtIEVuhJx0LCTiHZZMkV559VgK/aeaeYQ3fihXFUg4WglsvuVZUlxdEXCxrG8pKxlKSkMyDr79I0OCu3EzTCkT8Yl8vi0sUb58yVYxzOkPk5xKobdDYnbmobAYJhcuUewvR+GtGSiU13SA7mQ+XCLET/wmUqFAG1O2+fze51QN953pGBdUAPKjCROygR7xZXfB79yYfwxBYwF+VvfBxoa+W7Mytu77afim7W90nnmvi9obTHom62GTVmGBvl/LvUSCNmtuHWD8Q8O9Gy46PiaIPZSu1CUeczRR8cCHpmSoFJ15WnJg6WRiS2uit6JGT6sEE1f2lgFYN+ysTyJzXBvF912+pu2mMS606adSCvarISUoykdA5O1m3kAl9seSMkgu/VGnXW/Rn3ceemq8WyC5qXW2qCf/2MW4oEzZpyiDHY+xan7qarWCuvl/euRjMEoWf2r1/yBQn9XHka1543Dsd+R/MisnBpdwOSB30VgEbC+eDNNN+XZe+bl1PEk70ov1e72dc=
 
