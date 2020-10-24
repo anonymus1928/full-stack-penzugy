@@ -26,6 +26,7 @@ jobs:
         - stage: Deploy
           script: skip
           deploy:
+            skip_cleanup: true
             provider: heroku
             strategy: api
             app: fullstack-penzugy
