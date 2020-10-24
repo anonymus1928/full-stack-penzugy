@@ -41,4 +41,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the user's transactions.
+     */
+    public function transactions() {
+        return $this->hasMany('App\Models\Transaction', 'user_id', 'id');
+    }
+
+    /**
+     * Get the user's categories.
+     */
+    public function categories() {
+        return $this->hasMany('App\Models\Category', 'user_id', 'id');
+    }
+
+    /**
+     * Get the user's investments.
+     */
+    public function investments() {
+        return $this->hasMany('App\Models\Investment', 'user_id', 'id');
+    }
 }
