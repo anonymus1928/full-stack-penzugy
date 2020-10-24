@@ -17,8 +17,6 @@ jobs:
             - phpenv config-rm xdebug.ini
             - composer self-update
             - composer install
-            - touch database/database.sqlite
-            - cp .env.travis .env
           script: php artisan Test
         - stage: Deploy
           script: skip
