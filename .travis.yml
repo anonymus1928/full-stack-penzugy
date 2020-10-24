@@ -17,6 +17,11 @@ jobs:
             - phpenv config-rm xdebug.ini
             - composer self-update
             - composer install
+            - touch database/database.sqlite
+            - cp .env.travis .env
+            - php artisan key:generate
+            - php artisan migrate --force
+            - php artisan passport:install
           script: php artisan Test
         - stage: Deploy
           script: skip
