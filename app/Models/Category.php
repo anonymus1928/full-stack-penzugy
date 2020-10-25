@@ -25,6 +25,6 @@ class Category extends Model
      * Get the transactions applied to the current category.
      */
     public function categories() {
-        return $this->belongsToMany('App\Models\Transaction', 'category_transaction', 'transaction_id', 'category_id');
+        return $this->belongsToMany('App\Models\Transaction', 'category_transaction', 'category_id', 'transaction_id');
     }
 }

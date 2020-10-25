@@ -15,7 +15,7 @@ class CreateInvestmentsTable extends Migration
     {
         Schema::create('investments', function (Blueprint $table) {
             $table->id();
-            $table->integer('price');
+            $table->float('price');
             $table->integer('amount');
             $table->date('date');
 

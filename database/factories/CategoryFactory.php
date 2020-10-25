@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Transaction;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class TransactionFactory extends Factory
+class CategoryFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Transaction::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +22,8 @@ class TransactionFactory extends Factory
     public function definition()
     {
         return [
-            'amount'      => $this->faker->randomFloat(4, -1000000, 1000000),
-            'name'        => $this->faker->word,
+            'name'        => $this->faker->unique()->word,
             'description' => $this->faker->text(200),
-            'due'         => $this->faker->dateTimeBetween('-5 years', 'now'),
             'user_id'     => $this->faker->numberBetween(1, 3),
         ];
     }

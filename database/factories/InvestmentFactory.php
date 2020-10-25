@@ -22,7 +22,11 @@ class InvestmentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'price'    => $this->faker->randomFloat(4, 10, 5000),
+            'amount'   => $this->faker->numberBetween(1, 9999),
+            'date'     => $this->faker->dateTimeBetween('-30 years', 'now'),
+            'user_id'  => $this->faker->numberBetween(1, 3),
+            'share_id' => $this->faker->numberBetween(1,20),
         ];
     }
 }

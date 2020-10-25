@@ -11,6 +11,7 @@ class Transaction extends Model
 
     protected $fillable = [
         'amount',
+        'name',
         'description',
         'due',
     ];
@@ -26,6 +27,6 @@ class Transaction extends Model
      * Get the categories applied to the current transaction.
      */
     public function categories() {
-        return $this->belongsToMany('App\Models\Category', 'category_transaction', 'category_id', 'transaction_id');
+        return $this->belongsToMany('App\Models\Category', 'category_transaction', 'transaction_id', 'category_id');
     }
 }
