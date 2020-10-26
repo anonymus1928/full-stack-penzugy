@@ -15,6 +15,7 @@ class CreateInvestmentsTable extends Migration
     {
         Schema::create('investments', function (Blueprint $table) {
             $table->id();
+            
             $table->float('price');
             $table->integer('amount');
             $table->date('date');
@@ -25,6 +26,7 @@ class CreateInvestmentsTable extends Migration
             $table->unsignedBigInteger('share_id')->nullable();
             $table->foreign('share_id')->references('id')->on('shares');
 
+            $table->softDeletes();
             $table->timestamps();
         });
     }

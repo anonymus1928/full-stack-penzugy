@@ -62,7 +62,7 @@ class ShareFactory extends Factory
             'history' => json_encode($history),
             'currency' => $this->faker->currencyCode,
             'country' => $this->faker->countryCode,
-            'sektor' => $this->faker->word,
+            'sector' => $this->faker->word,
             'industry' => $this->faker->word,
             'address' => $this->faker->address,
             'full_time_employees' => $this->faker->numberBetween(100, 100000),

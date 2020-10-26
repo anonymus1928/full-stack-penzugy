@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Investment;
 use App\Models\Share;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
@@ -49,9 +48,9 @@ class InvestmentController extends Controller
     }
 
     /**
-     * Create new investment.
+     * Create investment.
      */
-    public function newInvestment(Request $request) {
+    public function createInvestment(Request $request) {
         // Validation
         $validator = Validator::make($request->all(), [
             'symbol' => 'required',
@@ -63,10 +62,10 @@ class InvestmentController extends Controller
             return response()->json(['status' => 'error', 'error' => $validator->errors()], 422);
         }
 
-        // Change apiKey for bad tests
+        // Change apiKey for tests
         $test = isset($request->test);
 
-        // Create or update database entity
+        // Create or update share database entity
         $share = $this->storeShareFromAlpha($request->symbol, $test);
 
         // Error handling
@@ -89,9 +88,46 @@ class InvestmentController extends Controller
         return response()->json(['status' => 'OK'], 201);
     }
 
+    /**
+     * Modify investment.
+     */
+    public function updateInvestment(Request $request, $id) {
+        // Validation
+        $validator = Validator::make($request->all(), [
+            'price'  => 'numeric',
+            'amount' => 'integer',
+            'date'   => 'date'
+        ]);
+        if($validator->fails()) {
+            return response()->json(['status' => 'error', 'error' => $validator->errors()], 422);
+        }
 
+        // Update investment
+        $investment = Auth::user()->investments->where('id', '=', $id)->first();
+        if(isset($investment)) {
+            // Change apiKey for tests
+            $test = isset($request->test);
 
+            // Create or update share database entity
+            $this->storeShareFromAlpha($investment->share->symbol, $test);
 
+            $investment->update($request->all());
+            return response()->json(['status' => 'OK'], 200);
+        }
+        return response()->json(['status' => 'error', 'error' => 'Id not found'], 404);
+    }
+
+    /**
+     * Delete an investment (soft delete)
+     */
+    public function deleteInvestment(Request $request, $id) {
+        $investment = Auth::user()->investments->find($id);
+        if(isset($investment)) {
+            $investment->delete();
+            return response()->json(['status' => 'OK'], 200);
+        }
+        return response()->json(['status' => 'error', 'error' => 'Id not found'], 404);
+    }
 
     /**
      * Helper functions
@@ -124,6 +160,7 @@ class InvestmentController extends Controller
                 'apikey'   => $apiKey,
             ])->getBody();
             $company = json_decode($company);
+            //dump($company, $symbol, $apiKey, env('ALPHA_API_KEY_REAL'), env('ALPHA_API_KEY'));
             
             // Wrong symbol
             if(!isset($company->Symbol)) {
@@ -162,7 +199,7 @@ class InvestmentController extends Controller
             $share->exchange              = $company->Exchange;
             $share->currency              = $company->Currency;
             $share->country               = $company->Country;
-            $share->sektor                = $company->Sector;
+            $share->sector                = $company->Sector;
             $share->industry              = $company->Industry;
             $share->address               = $company->Address;
             $share->full_time_employees   = $company->FullTimeEmployees;

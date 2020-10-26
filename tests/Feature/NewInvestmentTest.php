@@ -14,7 +14,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 5000, 'date' => now()]);
+        $response = $this->json('POST', '/api/investments', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 5000, 'date' => now()]);
 
         $response
             ->assertStatus(201);
@@ -24,7 +24,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 5000, 'date' => now()]);
+        $response = $this->json('POST', '/api/investments', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 5000, 'date' => now()]);
 
         $response
             ->assertStatus(201);
@@ -34,7 +34,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['symbol' => 'xyz', 'price' => 103.254, 'amount' => 5000, 'date' => now(), 'test' => true]);
+        $response = $this->json('POST', '/api/investments', ['symbol' => 'xyz', 'price' => 103.254, 'amount' => 5000, 'date' => now(), 'test' => true]);
 
         $response
             ->assertStatus(404)
@@ -47,7 +47,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['price' => 103.254, 'amount' => 5000, 'date' => now()]);
+        $response = $this->json('POST', '/api/investments', ['price' => 103.254, 'amount' => 5000, 'date' => now()]);
 
         $response
             ->assertStatus(422)
@@ -60,7 +60,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['symbol' => 'IBM', 'amount' => 5000, 'date' => now()]);
+        $response = $this->json('POST', '/api/investments', ['symbol' => 'IBM', 'amount' => 5000, 'date' => now()]);
 
         $response
             ->assertStatus(422)
@@ -73,7 +73,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['symbol' => 'IBM', 'price' => 103.254, 'date' => now()]);
+        $response = $this->json('POST', '/api/investments', ['symbol' => 'IBM', 'price' => 103.254, 'date' => now()]);
 
         $response
             ->assertStatus(422)
@@ -86,7 +86,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 5000]);
+        $response = $this->json('POST', '/api/investments', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 5000]);
 
         $response
             ->assertStatus(422)
@@ -99,7 +99,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['symbol' => 'IBM', 'price' => 'alma', 'amount' => 5000, 'date' => now()]);
+        $response = $this->json('POST', '/api/investments', ['symbol' => 'IBM', 'price' => 'alma', 'amount' => 5000, 'date' => now()]);
 
         $response
             ->assertStatus(422)
@@ -112,7 +112,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 'alma', 'date' => now()]);
+        $response = $this->json('POST', '/api/investments', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 'alma', 'date' => now()]);
 
         $response
             ->assertStatus(422)
@@ -125,7 +125,7 @@ class NewInvestmentTest extends TestCase
         Passport::actingAs(
             User::factory()->create()
         );
-        $response = $this->json('POST', '/api/investments/new', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 5000, 'date' => 123]);
+        $response = $this->json('POST', '/api/investments', ['symbol' => 'IBM', 'price' => 103.254, 'amount' => 5000, 'date' => 123]);
 
         $response
             ->assertStatus(422)

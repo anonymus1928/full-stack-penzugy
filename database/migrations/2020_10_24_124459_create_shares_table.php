@@ -15,6 +15,7 @@ class CreateSharesTable extends Migration
     {
         Schema::create('shares', function (Blueprint $table) {
             $table->id();
+            
             $table->string('symbol')->unique();
             $table->string('name');
             $table->text('description');
@@ -22,11 +23,13 @@ class CreateSharesTable extends Migration
             $table->json('history');
             $table->string('currency');
             $table->string('country');
-            $table->string('sektor');
+            $table->string('sector');
             $table->string('industry');
             $table->string('address');
             $table->bigInteger('full_time_employees');
             $table->bigInteger('market_capitalization');
+
+            $table->softDeletes();
             $table->timestamps();
         });
     }
