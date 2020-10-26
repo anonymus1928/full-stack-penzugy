@@ -11,7 +11,7 @@ use Laravel\Passport\Passport;
 class AuthenticationTest extends TestCase
 {
     public function testRegisterUserWithoutNameGiven() {
-        $response = $this->json('POST', '/api/register', ['email' => 'q@q.hu', 'password' => 'p']);
+        $response = $this->json('POST', '/api/register', ['email' => 'q@q.hu', 'password' => 'q']);
 
         $response
             ->assertStatus(422)
@@ -21,7 +21,7 @@ class AuthenticationTest extends TestCase
     }
 
     public function testRegisterUserWithoutEmailGiven() {
-        $response = $this->json('POST', '/api/register', ['name' => 'Teszt Felhasználó', 'password' => 'p']);
+        $response = $this->json('POST', '/api/register', ['name' => 'Teszt Felhasználó', 'password' => 'q']);
 
         $response
             ->assertStatus(422)
@@ -41,7 +41,7 @@ class AuthenticationTest extends TestCase
     }
 
     public function testRegisterUserWithWrongEmail() {
-        $response = $this->json('POST', '/api/register', ['name' => 'Teszt Felhasználó', 'email' => 'q.hu', 'password' => 'p']);
+        $response = $this->json('POST', '/api/register', ['name' => 'Teszt Felhasználó', 'email' => 'q.hu', 'password' => 'q']);
 
         $response
             ->assertStatus(422)
@@ -51,7 +51,7 @@ class AuthenticationTest extends TestCase
     }
 
     public function testRegisterUserWithValidDatas() {
-        $response = $this->json('POST', '/api/register', ['name' => 'Teszt Felhasználó', 'email' => 'q@q.hu', 'password' => 'p']);
+        $response = $this->json('POST', '/api/register', ['name' => 'Teszt Felhasználó', 'email' => 'q@q.hu', 'password' => 'q']);
 
         $response
             ->assertStatus(201)
@@ -61,7 +61,7 @@ class AuthenticationTest extends TestCase
     }
 
     public function testLoginWithWrongEmail() {
-        $response = $this->json('POST', '/api/login', ['email' => 'qq.hu', 'password' => 'p']);
+        $response = $this->json('POST', '/api/login', ['email' => 'qq.hu', 'password' => 'q']);
 
         $response
             ->assertStatus(401)
@@ -81,7 +81,7 @@ class AuthenticationTest extends TestCase
     }
 
     public function testLoginWithCorrectCredentials() {
-        $response = $this->json('POST', '/api/login', ['email' => 'q@q.hu', 'password' => 'p']);
+        $response = $this->json('POST', '/api/login', ['email' => 'q@q.hu', 'password' => 'q']);
 
         $response
             ->assertStatus(200)

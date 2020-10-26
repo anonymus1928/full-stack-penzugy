@@ -20,6 +20,13 @@ class CreateSharesTable extends Migration
             $table->text('description');
             $table->string('exchange');
             $table->json('history');
+            $table->string('currency');
+            $table->string('country');
+            $table->string('sektor');
+            $table->string('industry');
+            $table->string('address');
+            $table->bigInteger('full_time_employees');
+            $table->bigInteger('market_capitalization');
             $table->timestamps();
         });
     }

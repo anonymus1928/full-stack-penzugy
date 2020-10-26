@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Lcobucci\JWT\Parser;
 
 const TOKEN_NAME = 'SuperMaxiToken';
 
@@ -54,6 +55,17 @@ class ApiAuthController extends Controller
         } else {
             return response()->json(['status' => 'error', 'error' => 'Unauthorised'], 401);
         }
+    }
+
+
+    /**
+     * Logout
+     */
+    public function logout(Request $request) {
+        $tokenRepository = app('Laravel\Passport\TokenRepository');
+        $tokenId = (new Parser())->parse($request->bearerToken())->getClaims()['jti']->getValue();
+        $tokenRepository->revokeAccessToken($tokenId);
+        return response()->json(['status' => 'OK']);
     }
 
 

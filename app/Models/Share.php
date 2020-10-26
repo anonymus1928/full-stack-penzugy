@@ -15,6 +15,13 @@ class Share extends Model
         'description',
         'exchange',
         'history',
+        'currency',
+        'country',
+        'sektor',
+        'industry',
+        'address',
+        'full_time_employees',
+        'market_capitalization',
     ];
 
     /**

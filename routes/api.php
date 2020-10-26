@@ -16,29 +16,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Login
-Route::post('/login', [ApiAuthController::class, 'login']);
-
-// Registration
+// Authentication
 Route::post('/register', [ApiAuthController::class, 'register']);
+Route::post('/login',    [ApiAuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function() {
-    Route::get('/info', [ApiAuthController::class, 'get_user']);
+    Route::get( '/info',   [ApiAuthController::class, 'get_user']);
+    Route::post('/logout', [ApiAuthController::class, 'logout']);
 
     // Transactions
     Route::get(    '/transactions',        [TransactionController::class, 'getTransaction']);
     Route::get(    '/transactions/{id}',   [TransactionController::class, 'getTransaction'])->where('id', '[0-9]+');
     Route::post(   '/transactions/new',    [TransactionController::class, 'newTransaction']);
     Route::patch(  '/transactions/modify', [TransactionController::class, 'modifyTransaction']);
-    Route::delete( '/transactions/delte',  [TransactionController::class, 'deleteTransaction']);
+    Route::delete( '/transactions/delete', [TransactionController::class, 'deleteTransaction']);
 
     // Investments
     Route::get(    '/investments',          [InvestmentController::class, 'getInvestment']);
-    Route::get(    '/investments/get/{id}', [InvestmentController::class, 'getInvestment'])->where('id', '[0-9]+');
-    Route::get(    '/investments/{symbol}', [InvestmentController::class, 'getInvestment']);
+    Route::get(    '/investments/{id}',     [InvestmentController::class, 'getInvestmentById'])->where('id', '[0-9]+');
+    Route::get(    '/investments/{symbol}', [InvestmentController::class, 'getInvestmentBySymbol']);
     Route::post(   '/investments/new',      [InvestmentController::class, 'newInvestment']);
     Route::patch(  '/investments/modify',   [InvestmentController::class, 'modifyInvestment']);
-    Route::delete( '/investments/delte',    [InvestmentController::class, 'deleteInvestment']);
+    Route::delete( '/investments/delete',   [InvestmentController::class, 'deleteInvestment']);
 
     // Shares
     Route::get( '/shares/{symbol}',    [ShareController::class, 'getShare']);
