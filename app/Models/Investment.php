@@ -16,6 +16,24 @@ class Investment extends Model
         'date',
     ];
 
+    protected $hidden = [
+        'user_id',
+        'share_id',
+        'deleted_at',
+    ];
+
+    public function toArray() {
+        $data = parent::toArray();
+
+        if($this->share) {
+            $data['share'] = $this->share;
+        } else {
+            $data['share'] = null;
+        }
+
+        return $data;
+    }
+
     /**
      * Get the user of the stock investment.
      */

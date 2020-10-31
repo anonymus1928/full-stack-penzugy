@@ -18,7 +18,7 @@ class CreateTransactionsTable extends Migration
 
             $table->float('amount');
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->dateTime('due');
 
             $table->unsignedBigInteger('user_id');

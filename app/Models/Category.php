@@ -15,6 +15,14 @@ class Category extends Model
         'description',
     ];
 
+    protected $hidden = [
+        'user_id',
+        'deleted_at',
+        'pivot',
+        'created_at',
+        'updated_at',
+    ];
+
     /**
      * Get the user of the category.
      */
@@ -25,7 +33,7 @@ class Category extends Model
     /**
      * Get the transactions applied to the current category.
      */
-    public function categories() {
+    public function transactions() {
         return $this->belongsToMany('App\Models\Transaction', 'category_transaction', 'category_id', 'transaction_id');
     }
 }

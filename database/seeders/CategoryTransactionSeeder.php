@@ -17,7 +17,7 @@ class CategoryTransactionSeeder extends Seeder
     {
         // Create Categories
         Category::factory()
-                ->count(3)
+                ->count(20)
                 ->create();
 
         // Create Transactions
@@ -25,7 +25,7 @@ class CategoryTransactionSeeder extends Seeder
                 ->count(20)
                 ->create();
 
-        // Get all transaction
+        // Get all category
         $categories = Category::all();
 
         // Populate the pivot table

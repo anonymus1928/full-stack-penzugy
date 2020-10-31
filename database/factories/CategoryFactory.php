@@ -24,7 +24,7 @@ class CategoryFactory extends Factory
         return [
             'name'        => $this->faker->unique()->word,
             'description' => $this->faker->text(200),
-            'user_id'     => $this->faker->numberBetween(1, 3),
+            'user_id'     => 1,
         ];
     }
 }

@@ -17,6 +17,11 @@ class Transaction extends Model
         'due',
     ];
 
+    protected $hidden = [
+        'user_id',
+        'deleted_at',
+    ];
+
     /**
      * Get the user of the transaction.
      */

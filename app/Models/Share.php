@@ -25,6 +25,10 @@ class Share extends Model
         'market_capitalization',
     ];
 
+    protected $hidden = [
+        'deleted_at',
+    ];
+
     /**
      * Get the investments of the current share.
      */
