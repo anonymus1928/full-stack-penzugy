@@ -39,13 +39,13 @@ class ShareController extends Controller
         // Error handling
         if(is_int($share)) {
             if(-1 == $share) {
-                return response()->json(['status' => 'error', 'error' => 'Symbol not found', 'test' => $test], 404);
+                return response()->json(['status' => 'error', 'error' => 'Symbol not found', 'test_key_real' => env('ALPHA_API_KEY_REAL'), 'test_key' => env('ALPHA_API_KEY')], 404);
             }
             if(-2 == $share) {
                 return response()->json(['status' => 'error', 'error' => 'Limit exceeded, please try again later'], 429);
             }
         }
 
-        return response()->json(['status' => 'OK', 'share' => $share]);
+        return response()->json(['status' => 'OK', 'share' => $share, 'test_key_real' => env('ALPHA_API_KEY_REAL'), 'test_key' => env('ALPHA_API_KEY')]);
     }
 }
