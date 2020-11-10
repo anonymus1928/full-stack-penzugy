@@ -48,9 +48,8 @@ class ShareTest extends TestCase
         );
 
         $response = $this->json('PUT', '/api/shares/GOOG', ['test' => true]);
-        $response->dump();
-        //$response
-        //    ->assertStatus(200);
+        $response
+            ->assertStatus(200);
     }
 
     public function testCreateOrUpdateShareWithWrongSymbol() {
