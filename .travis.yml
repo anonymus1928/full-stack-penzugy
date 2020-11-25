@@ -36,4 +36,17 @@ jobs:
               app: fullstack-penzugy
               api_key:
                   secure: "s3P9CFrZNUVeqCiBjvGyShWel42d+FjK3EXBfYVfv0Lm99VrWrWSpw9DvEJcHzu+qcYmcRj+EhHYWFhKZk7KBD00A/3IhqN26oUOp4jjNkIClJl8QIusGxlnv2cPC3pGZk5tklaFPUxdCh3IPIIGpRod5CdyDSR22v0w8nlwlR+hNJ2Bc3bowLIl9NtAg/nadcMoVuOeNiVTN0EbrxSo8ErD4Sinku6zQ3lwk43sVA/U4LV1IpKoK+X6I8hWmcq/Jn1GGJ+dfjkj6K2xCg+4vcG9kLKLsGuBut1u6xIQQXNUsU4Wp2KBDYvhW3qrjjoPlFEFmfjCu22HbwFq8aVfTGIGeNC3rXg1lLI2idLhSI7vZ2BFpcGP0XXfhAEYVHjkplwh7wiaBRF62dBQRSnNA+do3C0Hc159wQkWN7RTFPEV/DejCGkh+ZNUi5P/AGNWi8U430P7c6TlwtfvyY53GPxDM2+w25bX1ycXLZHs8mm5Lw0hGuzJgVRMbvFCeoHlUVO0oJOl7UdEaO1XtZfzHIGOlSWndCGP+7gZwbZ/mVXW33I0b49wY4wNzc7rj1fCvXuNDAHSam6qo9flOXRdHSc2pGf+uMzXlXncSSzW2DRLGz/6YTC/Y0mrBNd3+DLZ8QKL20ol0Rk1wVsiGgA+Uf0sWoRt7KJg6YSxN9+pYuQ="
+        - stage: Frontend Deploy
+          language: node_js
+          node_js: node
+          cache:
+              directories:
+                - node_modules
+          before_install: cd frontend
+          after_success: npm build
+          deploy:
+              cleanup: false
+              provider: heroku
+              api_key:
+                  secure: "s3P9CFrZNUVeqCiBjvGyShWel42d+FjK3EXBfYVfv0Lm99VrWrWSpw9DvEJcHzu+qcYmcRj+EhHYWFhKZk7KBD00A/3IhqN26oUOp4jjNkIClJl8QIusGxlnv2cPC3pGZk5tklaFPUxdCh3IPIIGpRod5CdyDSR22v0w8nlwlR+hNJ2Bc3bowLIl9NtAg/nadcMoVuOeNiVTN0EbrxSo8ErD4Sinku6zQ3lwk43sVA/U4LV1IpKoK+X6I8hWmcq/Jn1GGJ+dfjkj6K2xCg+4vcG9kLKLsGuBut1u6xIQQXNUsU4Wp2KBDYvhW3qrjjoPlFEFmfjCu22HbwFq8aVfTGIGeNC3rXg1lLI2idLhSI7vZ2BFpcGP0XXfhAEYVHjkplwh7wiaBRF62dBQRSnNA+do3C0Hc159wQkWN7RTFPEV/DejCGkh+ZNUi5P/AGNWi8U430P7c6TlwtfvyY53GPxDM2+w25bX1ycXLZHs8mm5Lw0hGuzJgVRMbvFCeoHlUVO0oJOl7UdEaO1XtZfzHIGOlSWndCGP+7gZwbZ/mVXW33I0b49wY4wNzc7rj1fCvXuNDAHSam6qo9flOXRdHSc2pGf+uMzXlXncSSzW2DRLGz/6YTC/Y0mrBNd3+DLZ8QKL20ol0Rk1wVsiGgA+Uf0sWoRt7KJg6YSxN9+pYuQ="
 
