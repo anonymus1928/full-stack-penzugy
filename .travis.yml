@@ -45,16 +45,14 @@ jobs:
           before_install: cd frontend
           install:
             - npm install
-          script: skip
-          before_deploy:
-            - ng build --prod --base-href /fullstack-penzugy/
-            - cp dist/fullstack-penzugy/index.html dist/fullstack-penzugy/404.html
-            - ls
+          script:
+            - npm run build
+            - cp index.html 404.html
           deploy:
               provider: pages
-              cleanup: false
+              skip_cleanup: true
               github_token: $GITHUB_TOKEN
               target_branch: gh-pages
-              local_dir: frontend/dist/fullstack-penzugy
+              local_dir: dist/fullstack-penzugy
               on:
                 branch: master
