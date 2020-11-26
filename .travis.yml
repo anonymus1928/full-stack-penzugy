@@ -39,11 +39,7 @@ jobs:
         - stage: Frontend Deploy
           language: node_js
           node_js: node
-          cache:
-              directories:
-                - node_modules
           before_install: cd frontend
-          after_success: ng build --prod --output-path docs 
           deploy:
               provider: pages
               cleanup: false
