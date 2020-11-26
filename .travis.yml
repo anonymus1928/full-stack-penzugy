@@ -53,6 +53,6 @@ jobs:
               skip_cleanup: true
               github_token: $GITHUB_TOKEN
               target_branch: gh-pages
-              local_dir: dist/fullstack-penzugy
+              local_dir: frontend/dist/fullstack-penzugy
               on:
                 branch: master
