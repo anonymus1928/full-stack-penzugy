@@ -48,6 +48,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
+              "baseHref": "https://anonymus1928.github.io/full-stack-penzugy/",
               "budgets": [
                 {
                   "type": "initial",
