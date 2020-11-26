@@ -40,6 +40,7 @@ jobs:
           language: node_js
           node_js: node
           before_install: cd frontend
+          script: skip
           deploy:
               provider: pages
               cleanup: false
