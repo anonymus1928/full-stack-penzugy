@@ -5,13 +5,16 @@ import { InvestmentsComponent } from './investments/investments.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { AuthComponent } from './auth/auth.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: '', component: AuthComponent },
   { path: 'transactions', component: TransactionsComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'investments', component: InvestmentsComponent },
-  { path: 'shares', component: SharesComponent }
+  { path: 'shares', component: SharesComponent },
+  { path: '404', component: PagenotfoundComponent },
+  { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];
 
 @NgModule({

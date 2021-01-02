@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $category->getUser()->associate(Auth::user());
         $category->save();
 
-        return response()->json(['status' => 'OK'], 201);
+        return response()->json(['status' => 'OK', 'category' => $category], 201);
     }
 
     /**

@@ -52,7 +52,7 @@ class TransactionController extends Controller {
         $transaction->save();
         $transaction->categories()->attach($request->categories);
 
-        return response()->json(['status' => 'OK'], 201);
+        return response()->json(['status' => 'OK', 'transaction' => $transaction], 201);
     }
 
 

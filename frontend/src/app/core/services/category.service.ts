@@ -1,20 +1,44 @@
 import { Injectable } from '@angular/core';
+
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+
+import { NotificationService } from '@core/services/notification.service';
+
 import { Category } from '@core/interfaces/category.interface';
+
+import { baseUrl } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  categories: Category[] = [
-    { id: 1, name: 'Category #1', description: 'Description of Category #1', created_at: 1609584184, updated_at: 1609584184, uid: -1},
-    { id: 2, name: 'Category #2', description: 'Description of Category #2', created_at: 1609584184, updated_at: 1609584184, uid: -1},
-    { id: 3, name: 'Category #3', description: 'Description of Category #3', created_at: 1609584184, updated_at: 1609584184, uid: -1}
-  ];
-  constructor() { }
+  public categories$ = new BehaviorSubject<Category[]>([]);
+  
+  constructor(
+    private http: HttpClient,
+    private ns: NotificationService
+  ) { }
 
-  public getCategories(): Category [] {
-    return this.categories;
+  public getCategories(): void {
+    const header = new HttpHeaders().set(
+      'Authorization', `Bearer ${localStorage.getItem('fsPT')}`
+    );
+    this.http.get<Category[]>(`${baseUrl}/categories`, {headers: header}).subscribe(
+      c => {
+        this.categories$.next(c);
+      }
+    )
   }
 
-  
+  public addCategory(category: Category) {
+    const header = new HttpHeaders().set(
+      'Authorization', `Bearer ${localStorage.getItem('fsPT')}`
+    );
+    this.http.post(`${baseUrl}/categories`, category, {headers: header}).subscribe(
+      resp => {
+        
+      }
+    )
+  }
 }

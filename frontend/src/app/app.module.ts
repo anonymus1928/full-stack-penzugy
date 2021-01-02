@@ -43,6 +43,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 
 
 @NgModule({
@@ -60,6 +61,7 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
     SigninComponent,
     AuthComponent,
     SignupComponent,
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,

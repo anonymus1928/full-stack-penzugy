@@ -85,7 +85,7 @@ class InvestmentController extends Controller
         $investment->share()->associate($share);
         $investment->getUser()->associate(Auth::user());
         $investment->save();
-        return response()->json(['status' => 'OK'], 201);
+        return response()->json(['status' => 'OK', 'investment' => $investment], 201);
     }
 
     /**

@@ -37,7 +37,7 @@ export class AuthService {
         localStorage.setItem('fsPT', data['token']);
         this.isLogin$.next(true);
         this.ns.show('Sikeres regisztráció!')
-        this.router.navigate(['/']);
+        this.router.navigate(['/transactions']);
       },
       error => {
         this.ns.show('HIBA! A regisztráció sikertelen!');
@@ -52,7 +52,7 @@ export class AuthService {
         localStorage.setItem('fsPT', data['token']);
         this.isLogin$.next(true);
         this.ns.show('Sikeres bejelentkezés!');
-        this.router.navigate(['/']);
+        this.router.navigate(['/transactions']);
       },
       error => {
         this.ns.show('HIBA! Sikertelen bejelentkezés!');

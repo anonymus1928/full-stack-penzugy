@@ -8,7 +8,6 @@ import { NotificationService } from '@core/services/notification.service';
 import { MatchValidation } from '@core/validators/match.validator';
 
 import { User } from '@core/interfaces/user.interface';
-import { mainModule } from 'process';
 
 const RegExpValidator = {
 	'lowerCase': RegExp(/^(?=.*?[a-z])/),
