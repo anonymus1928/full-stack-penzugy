@@ -3,6 +3,11 @@
         <mat-icon mat-list-icon>attach_money</mat-icon>
         <h4 mat-line>Tranzakciók</h4>
     </mat-list-item>
+    <mat-list-item routerLink="/categories" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" matRipple>
+        <mat-icon mat-list-icon>category</mat-icon>
+        <h4 mat-line>Tranzakció kategóriák</h4>
+    </mat-list-item>
+    <mat-divider></mat-divider>
     <mat-list-item routerLink="/investments" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" matRipple>
         <mat-icon mat-list-icon>receipt_long</mat-icon>
         <h4 mat-line>Befektetések</h4>
@@ -11,7 +16,8 @@
         <mat-icon mat-list-icon>trending_up</mat-icon>
         <h4 mat-line>Részvény információk</h4>
     </mat-list-item>
-    <mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item *ngIf="(isLoggedIn$ | async)" (click)="logout()" matRipple>
         <mat-icon mat-list-icon>logout</mat-icon>
         <h4 mat-line>Kijelentkezés</h4>
     </mat-list-item>

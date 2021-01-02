@@ -1,0 +1,17 @@
+<form [formGroup]="signupForm" fxLayoutAlign="stretch" fxLayout="column" (ngSubmit)="signup(signupForm)" novalidate>
+    <mat-form-field hintLabel="Formátum: nev@domain.hu">
+        <input matInput type="email" placeholder="E-mail cím" formControlName="email" required>
+        <mat-error>Adja meg a regisztráció során használt email címét!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" placeholder="Jelszó" color="primary" formControlName="password" required>
+        <mat-error>A jelszó kitöltése kötelező!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput type="password" placeholder="Jelszó" color="primary" formControlName="password" required>
+        <mat-error>A jelszó kitöltése kötelező!</mat-error>
+    </mat-form-field>
+    <button mat-raised-button color="primary" style="margin: 15px 0 0 0">
+        Bejelentkezés
+    </button>
+</form>

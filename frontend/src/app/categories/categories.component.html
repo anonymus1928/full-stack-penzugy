@@ -1,0 +1,6 @@
+<div class="category" *ngFor="let category of cs.getCategories()">
+    <app-category [category]="category"></app-category>
+</div>
+<button mat-fab color="accent" class="add-button" (click)="openAddEditCategoryDialog()" matTooltip="Új kategória">
+    <mat-icon>add</mat-icon>
+</button>

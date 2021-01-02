@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { CategoryService } from "@core/services/category.service";
 
 @NgModule({
     declarations: [],
@@ -9,6 +10,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
         CommonModule,
         MatSnackBarModule
     ],
-    providers: []
+    providers: [
+        CategoryService
+    ]
 })
 export class CoreModule { }
