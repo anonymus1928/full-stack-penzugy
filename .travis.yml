@@ -21,7 +21,7 @@ jobs:
             - touch database/database.sqlite
             - cp .env.travis .env
             - php artisan key:generate
-            - php artisan migrate --force
+            - php artisan migrate:fresh --force
             - php artisan passport:install
           script: php artisan Test
         - stage: Backend Deploy
@@ -35,7 +35,7 @@ jobs:
               strategy: api
               app: fullstack-penzugy
               api_key:
-                  secure: "s3P9CFrZNUVeqCiBjvGyShWel42d+FjK3EXBfYVfv0Lm99VrWrWSpw9DvEJcHzu+qcYmcRj+EhHYWFhKZk7KBD00A/3IhqN26oUOp4jjNkIClJl8QIusGxlnv2cPC3pGZk5tklaFPUxdCh3IPIIGpRod5CdyDSR22v0w8nlwlR+hNJ2Bc3bowLIl9NtAg/nadcMoVuOeNiVTN0EbrxSo8ErD4Sinku6zQ3lwk43sVA/U4LV1IpKoK+X6I8hWmcq/Jn1GGJ+dfjkj6K2xCg+4vcG9kLKLsGuBut1u6xIQQXNUsU4Wp2KBDYvhW3qrjjoPlFEFmfjCu22HbwFq8aVfTGIGeNC3rXg1lLI2idLhSI7vZ2BFpcGP0XXfhAEYVHjkplwh7wiaBRF62dBQRSnNA+do3C0Hc159wQkWN7RTFPEV/DejCGkh+ZNUi5P/AGNWi8U430P7c6TlwtfvyY53GPxDM2+w25bX1ycXLZHs8mm5Lw0hGuzJgVRMbvFCeoHlUVO0oJOl7UdEaO1XtZfzHIGOlSWndCGP+7gZwbZ/mVXW33I0b49wY4wNzc7rj1fCvXuNDAHSam6qo9flOXRdHSc2pGf+uMzXlXncSSzW2DRLGz/6YTC/Y0mrBNd3+DLZ8QKL20ol0Rk1wVsiGgA+Uf0sWoRt7KJg6YSxN9+pYuQ="
+                  secure: "YDcyEjuwN6TgulflRPI5BLmz/x3PKpV0m83qlV5zxeXOiSEG0KyFdX0IkhcQfqhjlWG9dzPN6djLARXFkmGKz21KYLqrj10W/iv+Snq+0E1mbQVX8WCmzpIElAQ31ciDAk04nBCBW5a/QxBTrmbZDDhSLqJMPpKIWNYo4+hEmhdopUsYd+RA8qtziipa2NvVlX7HQTyfKyh4zmVrD5N3EXELz3aQAulWCfFxjG9oc2ZFKriBeZGAgbni3zV8yJ0zYARodPafwv/WdhSrSEk9o8B+D21oD/SqxXePKMJ0CZZklGgcs+fmdjbsa/Zwa2GXtOaMod6/ALcmPjJD5Ls+xUzjxxSAPUQMhQh7SyY0hX3/rKv3PFxtyYbLI2dBaOViLJMbjatI4mbro2OArsTV4tLsWjbT4ntTbVUvq61VORfdBF2kedIAgdHBn6Z2MOu6rm6xrWbsfQKnRYqE0bq++mtf4iqtCuMn8wPt4/6Vub/KfvdFl2jLHLULiWh3XD4NGTYCb7HzKwQ1gLeGXSSqUwUUuCNVWqG6cS/UIGg5dqsyTzLuJ4GMRRRaPghLg+sve4H8AxjBk2rCE+KgXnZuRWNjV4KT+iyHoS5g9l1/jEz/YcOXtLDkaBL4lnNA4vYqP34VYc3vTbBBh3GHFAicsBbJi9D6aUQoxpkibnvXNT0="
         - stage: Frontend Deploy
           language: node_js
           node_js: node
