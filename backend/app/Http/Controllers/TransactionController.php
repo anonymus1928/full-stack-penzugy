@@ -75,7 +75,7 @@ class TransactionController extends Controller {
             return response()->json(['status' => 'error', 'error' => 'Transaction not found'], 404);
         }
         $transaction->update($request->all());
-        return response()->json(['status' => 'OK', 'category' => $transaction], 200);
+        return response()->json(['status' => 'OK', 'transaction' => $transaction], 200);
     }
 
 
