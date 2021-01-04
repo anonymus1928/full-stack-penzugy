@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard] },
   { path: 'investments', component: InvestmentsComponent, canActivate: [AuthGuard] },
   { path: 'shares', component: SharesComponent, canActivate: [AuthGuard] },
+  { path: 'shares/:filterName', component: SharesComponent, canActivate: [AuthGuard] },
   { path: '404', component: PagenotfoundComponent },
   { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];

@@ -14,7 +14,7 @@
 
 <mat-form-field class="filter">
     <mat-label>Szűrés</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Szimbólum" #filterInput>
+    <input matInput id="inputFilter" [(ngModel)]="filterInputText" (keyup)="applyFilter($event)" (click)="applyFilter($event)" placeholder="Szimbólum" #filterInput>
 </mat-form-field>
     
 <div class="mat-elevation-z8">
@@ -64,10 +64,7 @@
                         [yAxis]="yAxis"
                         [timeline]="timeline"
                         [results]="multi"
-                        [autoScale]="autoScale"
-                        (select)="onSelect($event)"
-                        (activate)="onActivate($event)"
-                        (deactivate)="onDeactivate($event)"></ngx-charts-line-chart>
+                        [autoScale]="autoScale"></ngx-charts-line-chart>
                 </div>
             </td>
         </ng-container>

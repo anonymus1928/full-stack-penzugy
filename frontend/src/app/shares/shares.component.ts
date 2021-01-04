@@ -23,7 +23,9 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 })
 export class SharesComponent {
 
-  public addShareForm: FormGroup;
+  addShareForm: FormGroup;
+
+  filterInputText: string;
 
   displayedColumns: string[] = ['symbol', 'name', 'exchange', 'currency'];
   expandedElement: Share | null;
@@ -57,6 +59,20 @@ export class SharesComponent {
       this.dataSource = new MatTableDataSource(s['share']);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      
+      
+      this.route.params.subscribe(params => {
+        if(params.filterName) {
+          this.filterInputText = params.filterName;
+          this.dataSource.filter = this.filterInputText.trim().toLowerCase();
+
+          if(this.dataSource.paginator) {
+            this.dataSource.paginator.firstPage();
+          }
+        } else {
+          this.filterInputText = "";
+        }
+      });
     });
   }
 
@@ -112,7 +128,6 @@ export class SharesComponent {
           "series": close
         }
       ]
-      
     }
   }
 }

@@ -1,1 +1,6 @@
-<p>investments works!</p>
+<div class="investment" *ngFor="let investment of (is.investments$ | async)">
+    <app-investment [investment]="investment"></app-investment>
+</div>
+<button mat-fab color="accent" class="add-button" (click)="openAddEditInvestmentDialog()" matTooltip="Új befektetési részvény">
+    <mat-icon>add</mat-icon>
+</button>

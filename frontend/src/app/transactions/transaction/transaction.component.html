@@ -7,7 +7,7 @@
         </mat-expansion-panel-header>
         <div>
             <p>{{ transaction.description }}</p>
-            <mat-chip-list style="">
+            <mat-chip-list>
                 <mat-chip *ngFor="let category of transaction.categories">{{ category.name }}</mat-chip>
             </mat-chip-list>
             <button mat-mini-fab color="primary" (click)="openAddEditTransactionDialog()">

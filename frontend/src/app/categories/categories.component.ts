@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from "@angular/material/dialog";
 import { CategoryService } from '@core/services/category.service';
 
-import { Category } from '@core/interfaces/category.interface';
 import { AddEditCategoryComponent } from './add-edit-category/add-edit-category.component';
 
 @Component({

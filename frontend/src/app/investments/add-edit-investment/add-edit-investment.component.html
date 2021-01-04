@@ -1,0 +1,31 @@
+<h2 *ngIf="!data; else update">Új befektetési részvény hozzáadása</h2>
+<ng-template #update><h2>Befektetési részvény módosítása</h2></ng-template>
+<form [formGroup]="investmentForm" (ngSubmit)="!data ? addInvestment(investmentForm) : updateInvestment(investmentForm, data.id)" novalidate>
+    <div fxLayout="row wrap" fxLayoutAlign="start start">
+        <mat-form-field appearance="fill" fxFlex="100">
+            <mat-label>Részvénykibocsátó szimbóluma</mat-label>
+            <input matInput type="text" formControlName="symbol">
+            <mat-error>Mező kitöltése kötelező!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex="30">
+            <mat-label>Vásárlási ár</mat-label>
+            <input matInput type="number" formControlName="price">
+            <mat-error>Mező kitöltése kötelező!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex="30">
+            <mat-label>Vásárolt mennyiség</mat-label>
+            <input matInput type="number" formControlName="amount">
+            <mat-error>Mező kitöltése kötelező!</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex="30">
+            <mat-label>Dátum</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error>Mező kitöltése kötelező!</mat-error>
+        </mat-form-field>
+        <div class="actions" appearance="fill" fxFlex="100">
+            <button mat-raised-button color="accent">Mentés</button>
+        </div>
+    </div>
+</form>

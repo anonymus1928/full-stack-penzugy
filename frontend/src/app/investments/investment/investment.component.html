@@ -1,1 +1,21 @@
-<p>investment works!</p>
+<mat-accordion multi>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title appearance="fill" fxFlex="33">{{ investment.share.name }}&nbsp;<strong>|</strong>&nbsp;{{ investment.share.symbol }}</mat-panel-title>
+            <mat-panel-description appearance="fill" fxFlex="33">{{ investment.amount }} db</mat-panel-description>
+            <mat-panel-description appearance="fill" fxFlex="33">{{ investment.price }} {{ investment.share.currency }} / db</mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+            <p><strong><i>{{ formatDate(investment.date) }}</i></strong></p>
+            <button mat-mini-fab color="primary" matTooltip="Részvénykibocsátó megtekintése" [routerLink]="['/shares', investment.share.symbol]" routerLinkActive="router-link-active">
+                <mat-icon>receipt_long</mat-icon>
+            </button>
+            <button mat-mini-fab color="primary" matTooltip="Szerkesztés" (click)="openAddEditInvestmentDialog()">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn" matTooltip="Törlés" (click)="deleteInvestment(investment.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

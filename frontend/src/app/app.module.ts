@@ -52,6 +52,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { AddEditInvestmentComponent } from './investments/add-edit-investment/add-edit-investment.component';
 
 
 @NgModule({
@@ -70,7 +71,8 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     AuthComponent,
     SignupComponent,
     PagenotfoundComponent,
-    AddEditTransactionComponent
+    AddEditTransactionComponent,
+    AddEditInvestmentComponent
   ],
   imports: [
     BrowserModule,
