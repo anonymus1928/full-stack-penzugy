@@ -6,7 +6,8 @@ export const environment = {
   production: false
 };
 
-export const baseUrl: string = 'http://localhost:8000/api';
+// export const baseUrl: string = 'http://localhost:8000/api';
+export const baseUrl: string = 'https://fullstack-penzugy.herokuapp.com/api';
 
 /*
  * For easier debugging in development mode, you can import the following file
