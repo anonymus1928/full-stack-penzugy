@@ -67,6 +67,7 @@ class InvestmentController extends Controller
 
         // Create or update share database entity
         $share = $this->storeShareFromAlpha($request->symbol, $test);
+        return response()->json(['thing' => $share], 429);
 
         // Error handling
         if(is_int($share)) {
@@ -160,18 +161,19 @@ class InvestmentController extends Controller
                 'apikey'   => $apiKey,
             ])->getBody();
             $company = json_decode($company);
+            return $company;
             //dump($company, $symbol, $apiKey, env('ALPHA_API_KEY_REAL'), env('ALPHA_API_KEY'));
             
             // Wrong symbol
-            if(!isset($company->Symbol)) {
-                return -1;
-            }
+            //if(!isset($company->Symbol)) {
+            //    return -1;
+            //}
         } else {
             // Check last update time, return if it is less than 24 hour
             if($this->oneDayEarlier($tmp->updated_at)) {
                 return $tmp;
             }
-        }
+        }/*
         // Update database entity
         $daily = Http::get('https://www.alphavantage.co/query', [
             'function' => 'TIME_SERIES_DAILY',
@@ -226,6 +228,6 @@ class InvestmentController extends Controller
 
         // Store entity
         $share->save();
-        return $share;
+        return $share;*/
     }
 }
