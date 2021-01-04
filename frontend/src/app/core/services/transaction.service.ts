@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Transaction } from '@core/interfaces/transaction.interface';
 import { BehaviorSubject } from 'rxjs';
 import { baseUrl } from 'src/environments/environment';
@@ -13,7 +14,8 @@ export class TransactionService {
 
   constructor(
     private http: HttpClient,
-    private ns: NotificationService
+    private ns: NotificationService,
+    private router: Router
   ) { }
 
   public getTransactions(): void {
@@ -35,7 +37,7 @@ export class TransactionService {
     const header = new HttpHeaders().set(
       'Authorization', `Bearer ${localStorage.getItem('fsPT')}`
     );
-    console.log(transaction.due);
+    console.log(tmpCats);
     
     const body = {
       amount: transaction.amount,
@@ -47,7 +49,9 @@ export class TransactionService {
     this.http.post(`${baseUrl}/transactions`, body, {headers: header}).subscribe(
       resp => {
         console.log(resp);
-        this.transactions$.next(this.transactions$.getValue().concat([resp['transaction']]));
+        this.router.navigate(['/refresh', {skipLocationChange: true}]).then(() => {
+          this.router.navigate(['/transactions']);
+        });
       },
       error => {
         this.ns.show('Az új tranzakció létrehozása sikertelen.');
@@ -70,7 +74,9 @@ export class TransactionService {
     this.http.patch(`${baseUrl}/transactions/${id}`, body, {headers: header}).subscribe(
       resp => {
         console.log(resp);
-        this.transactions$.next(this.transactions$.getValue().filter(cat => cat.id !== id).concat([resp['transaction']]));
+        this.router.navigate(['/refresh', {skipLocationChange: true}]).then(() => {
+          this.router.navigate(['/transactions']);
+        });
       },
       error => {
         this.ns.show('A tranzakció módosítása sikertelen.');
