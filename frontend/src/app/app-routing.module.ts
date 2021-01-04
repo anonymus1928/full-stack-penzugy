@@ -6,13 +6,14 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { AuthComponent } from './auth/auth.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AuthGuard } from '@core/guards/auth.guard';
 
 const routes: Routes = [
   { path: '', component: AuthComponent },
-  { path: 'transactions', component: TransactionsComponent },
-  { path: 'categories', component: CategoriesComponent },
-  { path: 'investments', component: InvestmentsComponent },
-  { path: 'shares', component: SharesComponent },
+  { path: 'transactions', component: TransactionsComponent, canActivate: [AuthGuard] },
+  { path: 'categories', component: CategoriesComponent, canActivate: [AuthGuard] },
+  { path: 'investments', component: InvestmentsComponent, canActivate: [AuthGuard] },
+  { path: 'shares', component: SharesComponent, canActivate: [AuthGuard] },
   { path: '404', component: PagenotfoundComponent },
   { path: '**', redirectTo: '404', pathMatch: 'full' }
 ];

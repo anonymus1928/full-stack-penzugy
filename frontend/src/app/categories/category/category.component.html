@@ -1,14 +1,14 @@
 <mat-accordion multi>
-    <mat-expansion-panel hideToggle>
+    <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>{{ category.name }}</mat-panel-title>
             <mat-panel-description>{{ category.description }}</mat-panel-description>
         </mat-expansion-panel-header>
         <div>    
-            <button mat-mini-fab color="primary">
+            <button mat-mini-fab color="primary" (click)="openAddEditCategoryDialog()">
                 <mat-icon>edit</mat-icon>
             </button>
-            <button mat-mini-fab color="warn">
+            <button mat-mini-fab color="warn" (click)="deleteCategory(category.id)">
                 <mat-icon>delete</mat-icon>
             </button>
         </div>

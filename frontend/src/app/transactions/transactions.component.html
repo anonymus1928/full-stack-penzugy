@@ -1,1 +1,6 @@
-<app-transaction></app-transaction>
+<div class="transaction" *ngFor="let transaction of (ts.transactions$ | async)">
+    <app-transaction [transaction]="transaction"></app-transaction>
+</div>
+<button mat-fab color="accent" class="add-button" (click)="openAddEditTransactionDialog()" matTooltip="Új tranzakció">
+    <mat-icon>add</mat-icon>
+</button>

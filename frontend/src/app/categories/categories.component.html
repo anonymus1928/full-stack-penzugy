@@ -1,4 +1,4 @@
-<div class="category" *ngFor="let category of cs.getCategories()">
+<div class="category" *ngFor="let category of (cs.categories$ | async)">
     <app-category [category]="category"></app-category>
 </div>
 <button mat-fab color="accent" class="add-button" (click)="openAddEditCategoryDialog()" matTooltip="Új kategória">

@@ -40,10 +40,14 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatChipsModule } from '@angular/material/chips';
-import { MatRippleModule } from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AuthGuard } from '@core/guards/auth.guard';
+import { AddEditTransactionComponent } from './transactions/add-edit-transaction/add-edit-transaction.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -62,6 +66,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     AuthComponent,
     SignupComponent,
     PagenotfoundComponent,
+    AddEditTransactionComponent,
   ],
   imports: [
     BrowserModule,
@@ -90,9 +95,15 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
     MatChipsModule,
     MatRippleModule,
     MatAutocompleteModule,
-    MatPasswordStrengthModule
+    MatPasswordStrengthModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {provide: MAT_DATE_LOCALE, useValue: 'hu-HU'}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

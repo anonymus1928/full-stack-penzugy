@@ -32,7 +32,7 @@ export class AuthService {
   }
 
   register(user: User): void {
-    this.http.post<User>(`${baseUrl}/api/register`, user, this.httpOptions).subscribe(
+    this.http.post<User>(`${baseUrl}/register`, user, this.httpOptions).subscribe(
       data => {
         localStorage.setItem('fsPT', data['token']);
         this.isLogin$.next(true);
@@ -47,7 +47,7 @@ export class AuthService {
   }
 
   login(user: User): void {
-    this.http.post<User>(`${baseUrl}/api/login`, user, this.httpOptions).subscribe(
+    this.http.post<User>(`${baseUrl}/login`, user, this.httpOptions).subscribe(
       data => {
         localStorage.setItem('fsPT', data['token']);
         this.isLogin$.next(true);

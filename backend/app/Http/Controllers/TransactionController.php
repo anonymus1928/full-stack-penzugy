@@ -65,6 +65,7 @@ class TransactionController extends Controller {
             'amount' => 'required|numeric',
             'name' => 'required',
             'due' => 'required|date',
+            'categories' => 'nullable|array',
         ]);
         if($validator->fails()) {
             return response()->json(['status' => 'error', 'error' => $validator->errors()], 422);

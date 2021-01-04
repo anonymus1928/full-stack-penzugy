@@ -1,8 +1,10 @@
+import { Category } from "./category.interface";
+
 export interface Transaction {
-    iid: number;
+    id: number;
     amount: number;
     name: string;
     description: string;
-    due: number;
-    uid: number;
+    due: string;
+    categories: Category[];
 }
