@@ -73,7 +73,7 @@ export class AddEditTransactionComponent implements OnInit {
       this.dialogRef.close();
       this.ns.show('Tranzakció módosítása sikeres!');
     } else {
-      this. ns.show('A megadott adatok hibásak!');
+      this.ns.show('A megadott adatok hibásak!');
     }
   }
 

@@ -1,0 +1,64 @@
+table {
+    width: 100%;
+}
+
+form {
+    font-size: 14px;
+    width: 100%;
+}
+
+td, th {
+    width: 25%;
+}
+
+.filter {
+    margin-top: 2rem;
+}
+
+button {
+    margin-left: 2rem;
+    line-height: 100%;
+}
+
+tr.detail-row {
+    height: 0;
+}
+
+tr.share-row:not(.expanded-row):hover {
+    background: whitesmoke;
+}
+
+tr.share-row:not(.expanded-row):active {
+    background: #efefef;
+}
+
+.share-row td {
+    border-bottom-width: 0;
+}
+
+.share-detail {
+    overflow: hidden;
+}
+
+.share-diagram {
+    min-width: 80px;
+    border: 2px solid black;
+    padding: 8px;
+    font-weight: lighter;
+    margin: 8px 0;
+    height: 104px;
+}
+
+.share-symbol {
+    font-weight: bold;
+    font-size: 40px;
+    line-height: normal;
+}
+
+.share-description {
+    padding: 16px;
+}
+
+.share-description-attribution {
+    opacity: 0.5;
+}

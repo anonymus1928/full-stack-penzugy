@@ -48,6 +48,9 @@ import { AuthGuard } from '@core/guards/auth.guard';
 import { AddEditTransactionComponent } from './transactions/add-edit-transaction/add-edit-transaction.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -66,7 +69,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     AuthComponent,
     SignupComponent,
     PagenotfoundComponent,
-    AddEditTransactionComponent,
+    AddEditTransactionComponent
   ],
   imports: [
     BrowserModule,
@@ -98,7 +101,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatPasswordStrengthModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     AuthGuard,

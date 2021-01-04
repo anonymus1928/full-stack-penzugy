@@ -27,7 +27,7 @@ export class TransactionService {
         this.transactions$.next(t['transaction']);
       },
       error => {
-        this.ns.show('Váratlan hiba tölrtént!');
+        this.ns.show('Váratlan hiba történt!');
         console.error(error);
       }
     );

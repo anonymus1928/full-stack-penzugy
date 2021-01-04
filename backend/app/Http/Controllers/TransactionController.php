@@ -74,6 +74,7 @@ class TransactionController extends Controller {
         if(!isset($transaction)) {
             return response()->json(['status' => 'error', 'error' => 'Transaction not found'], 404);
         }
+        $transaction->categories()->sync($request->categories);
         $transaction->update($request->all());
         return response()->json(['status' => 'OK', 'transaction' => $transaction], 200);
     }
