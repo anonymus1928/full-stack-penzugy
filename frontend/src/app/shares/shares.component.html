@@ -51,19 +51,30 @@
                         <mat-chip matTooltip="Ország">{{ share.country }}</mat-chip>
                         <mat-chip matTooltip="Ipar/Szektor">{{ share.industry }} | {{ share.sector }}</mat-chip>
                         <mat-chip matTooltip="Székhely">{{ share.address }}</mat-chip>
-                        <mat-chip matTooltip="Teljes foglalkoztatottságban dolgozók száma">{{ share.full_time_employees }}</mat-chip>
-                        <mat-chip matTooltip="Piaci kapitalizáció">{{ share.market_capitalization }}</mat-chip>
+                        <mat-chip matTooltip="Teljes foglalkoztatottságban dolgozók száma">{{ share.full_time_employees }} fő</mat-chip>
+                        <mat-chip matTooltip="Piaci kapitalizáció">{{ share.market_capitalization }} {{ share.currency }}</mat-chip>
                     </mat-chip-list>
                     <div class="share-description">
                         <pre>{{ share.description }}</pre>
                     </div>
+                    <ngx-charts-line-chart
+                        [scheme]="colorScheme"
+                        [legend]="legend"
+                        [xAxis]="xAxis"
+                        [yAxis]="yAxis"
+                        [timeline]="timeline"
+                        [results]="multi"
+                        [autoScale]="autoScale"
+                        (select)="onSelect($event)"
+                        (activate)="onActivate($event)"
+                        (deactivate)="onDeactivate($event)"></ngx-charts-line-chart>
                 </div>
             </td>
         </ng-container>
 
     
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let share; columns: displayedColumns;" class="share-row" [class.expanded-row]="expandedElement == share" (click)="expandedElement = expandedElement == share ? null : share"></tr>
+        <tr mat-row *matRowDef="let share; columns: displayedColumns;" class="share-row" [class.expanded-row]="expandedElement == share" (click)="expandShare(share)"></tr>
         <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
     
         <!-- Row shown when there is no matching data. -->

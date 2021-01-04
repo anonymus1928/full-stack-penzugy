@@ -29,6 +29,17 @@ export class SharesComponent {
   expandedElement: Share | null;
   dataSource: MatTableDataSource<Share>;
 
+  multi: any[];
+  legend: boolean = true;
+  animations: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  timeline: boolean = true;
+  autoScale: boolean = true;
+  colorScheme = {
+    domain: ['#5AA454', '#E44D25', '#CFC0BB', '#7aa3e5', '#a8385d', '#aae3f5']
+  }
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -42,7 +53,6 @@ export class SharesComponent {
       symbol: [null, Validators.required]
     });
 
-    let tmpData: Share[] = [];
     this.ss.asyncGetShares().then((s: Share[]) => {
       this.dataSource = new MatTableDataSource(s['share']);
       this.dataSource.paginator = this.paginator;
@@ -65,6 +75,44 @@ export class SharesComponent {
 
     if(this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
+    }
+  }
+
+  expandShare(share: Share) {
+    this.expandedElement = this.expandedElement == share ? null : share;
+    if(this.expandedElement) {
+      let tmp = JSON.parse(this.expandedElement.history);
+      tmp.reverse();
+      console.log(tmp);
+      let low = [];
+      let high = [];
+      let open = [];
+      let close = [];
+      tmp.forEach(d => {
+        low.push({name: d.date, value: d.low});
+        high.push({name: d.date, value: d.high});
+        open.push({name: d.date, value: d.open});
+        close.push({name: d.date, value: d.close});
+      });
+      this.multi = [
+        {
+          "name": "High",
+          "series": high
+        },
+        {
+          "name": "Low",
+          "series": low
+        },
+        {
+          "name": "Open",
+          "series": open
+        },
+        {
+          "name": "Close",
+          "series": close
+        }
+      ]
+      
     }
   }
 }

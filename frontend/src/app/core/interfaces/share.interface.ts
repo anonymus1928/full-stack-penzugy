@@ -4,7 +4,7 @@ export interface Share {
     name: string;
     description: string;
     exchange: string;
-    history: History[];
+    history: string;
     currency: string;
     country: string;
     sector: string;
