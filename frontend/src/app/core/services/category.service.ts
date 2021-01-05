@@ -8,6 +8,7 @@ import { NotificationService } from '@core/services/notification.service';
 import { Category } from '@core/interfaces/category.interface';
 
 import { baseUrl } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class CategoryService {
   
   constructor(
     private http: HttpClient,
-    private ns: NotificationService
+    private ns: NotificationService,
+    private router: Router
   ) { }
 
   async asyncGetCategories(): Promise<Category[]> {
@@ -40,6 +42,10 @@ export class CategoryService {
       error => {
         this.ns.show('Váratlan hiba történt!');
         console.error(error);
+        if(error.status == 401) {
+          localStorage.removeItem('fsPT')
+          this.router.navigate(['/']);
+        }
       }
     )
   }

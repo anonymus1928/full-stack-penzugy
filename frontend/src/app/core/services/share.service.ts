@@ -32,6 +32,10 @@ export class ShareService {
       error => {
         this.ns.show('Váratlan hiba történt!');
         console.error(error);
+        if(error.status == 401) {
+          localStorage.removeItem('fsPT')
+          this.router.navigate(['/']);
+        }
       }
     )
   }
@@ -50,6 +54,10 @@ export class ShareService {
       error => {
         this.ns.show('Váratlan hiba történt!');
         console.error(error);
+        if(error.status == 401) {
+          localStorage.removeItem('fsPT')
+          this.router.navigate(['/']);
+        }
       }
     );
   }

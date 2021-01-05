@@ -66,3 +66,10 @@ tr.share-row:not(.expanded-row):active {
 pre {
     white-space: pre-wrap;
 }
+
+tr {
+    cursor: pointer;
+    div {
+        cursor: default;
+    }
+}
